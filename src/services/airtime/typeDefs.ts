@@ -31,7 +31,7 @@ const AirtimeTypeDefs = gql`
   #generate TXN
   input TxnDTO {
     telcoId: ID!
-    amount: Int!
+    amount: String!
     phone: String!
   }
 
