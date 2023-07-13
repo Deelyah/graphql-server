@@ -23,18 +23,21 @@ class AirtimeRestService extends Base {
   }
 
   async GenerateTxnRoot(data: TxnDTO) {
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append("amount", data.amount);
     formData.append("telcoId", data.telcoId);
     formData.append("phone", data.phone);
+
     const response = await this.marketPlaceApi().post(
-      `api/v1/bills/airtime/generate-txn`,
+      "/api/v1/bills/airtime/generate-txn",
       formData,
       {
         headers: { ...formData.getHeaders() },
       }
     );
-    return response;
+
+    console.log("generate", response.data);
+    return response.data;
   }
 
   async PayWWalletRoot(data: PayWWalletDTO) {
@@ -49,7 +52,7 @@ class AirtimeRestService extends Base {
         headers: { ...formData.getHeaders() },
       }
     );
-    return response;
+    return response.data;
   }
 
   async PayWBankRoot(data: PayWBankDTO) {
@@ -63,7 +66,7 @@ class AirtimeRestService extends Base {
         headers: { ...formData.getHeaders() },
       }
     );
-    return response;
+    return response.data;
   }
 
   async AddBeneficiaryRoot(data: AddBeneficiaryDTO) {
@@ -78,7 +81,7 @@ class AirtimeRestService extends Base {
         headers: { ...formData.getHeaders() },
       }
     );
-    return response;
+    return response.data;
   }
 
   async DltBeneficiaryRoot(id: number) {
@@ -91,7 +94,7 @@ class AirtimeRestService extends Base {
         headers: { ...formData.getHeaders() },
       }
     );
-    return response;
+    return response.data;
   }
 }
 
