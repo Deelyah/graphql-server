@@ -25,12 +25,14 @@ export default class Base extends GeneralController {
     this.id = id;
   }
 
-  parseJSONtoFormData(data: Record<string, string>) {
+  parseJSONtoFormData(data: Record<string, any>): FormData {
     const formData = new FormData();
 
-    Object.keys(data).forEach((key) => {
-      formData.append(key, data[key]);
-    });
+    for (const [key, value] of Object.entries(data)) {
+      formData.append(key, value);
+    }
+
+    return formData;
   }
 
   marketPlaceApi() {
