@@ -1,7 +1,7 @@
 export interface TxnDTO {
-  amount: number;
-  phone: number;
-  telcoId: string;
+  telcoId: String;
+  amount: String;
+  phone: String;
 }
 
 export interface PayWWalletDTO {

@@ -24,7 +24,7 @@ class AirtimeRestService extends Base {
 
   async GenerateTxnRoot(data: TxnDTO) {
     let formData = new FormData();
-    formData.append("bundleId", data.amount);
+    formData.append("amount", data.amount);
     formData.append("telcoId", data.telcoId);
     formData.append("phone", data.phone);
     const response = await this.marketPlaceApi().post(
