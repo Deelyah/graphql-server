@@ -21,12 +21,14 @@ export const AirtimeQuery = {
 
   async History(
     _: unknown,
-    _args: unknown,
+    ItemsPerPage: number,
     context: { req: Request; res: Response }
   ) {
     const token = context.req.cookies["NETAPPS-AUTH-TOKEN"];
     const id = context.req.cookies["NETAPPS-AUTH-ID"];
-    const response = await new AirtimeDataSource(token, id).History();
+    const response = await new AirtimeDataSource(token, id).History(
+      ItemsPerPage
+    );
     return response;
   },
 };

@@ -15,9 +15,9 @@ class AirtimeRestService extends Base {
     return response.data;
   }
 
-  async HistoryRoot() {
+  async HistoryRoot(ItemsPerPage: number) {
     const response = await this.marketPlaceApi().get(
-      `api/v1/bills/airtime/history`
+      `api/v1/bills/airtime/history/${ItemsPerPage}`
     );
     return response.data;
   }

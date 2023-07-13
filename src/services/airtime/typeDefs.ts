@@ -3,7 +3,7 @@ import gql from "graphql-tag";
 const AirtimeTypeDefs = gql`
   type Query {
     GetTelcos: GetTelcosResponse
-    History: HistoryResponse
+    History(ItemsPerPage: Int!): HistoryResponse
   }
   type Mutation {
     GenerateTxn(data: TxnDTO): TxnResponse!
@@ -32,7 +32,7 @@ const AirtimeTypeDefs = gql`
   input TxnDTO {
     telcoId: ID!
     amount: Int!
-    phone: Int!
+    phone: String!
   }
 
   type TxnResponse {
@@ -54,6 +54,7 @@ const AirtimeTypeDefs = gql`
     name: String!
     logo: String!
   }
+
   #history
 
   type HistoryResponse {
@@ -61,10 +62,23 @@ const AirtimeTypeDefs = gql`
     flag: Boolean!
     auth: Boolean!
     soln: String!
-    #  data: [HistoryResponseData]
+    data: HistoryResponseData
   }
 
-  #type HistoryResponseData {}
+  type HistoryResponseData {
+    totalPages: Int!
+    data: [HistoryData!]
+  }
+
+  type HistoryData {
+    ref: ID!
+    createdAt: String!
+    amount: Int!
+    status: String!
+    phone: Int!
+    operatorName: String
+    operatorLogo: String
+  }
 
   #Pay with wallet
   input PayWWalletDTO {

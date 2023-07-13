@@ -7,8 +7,8 @@ class AirtimeDataSource extends AirtimeRestService {
     return response;
   }
 
-  async History() {
-    const response = await this.HistoryRoot();
+  async History(ItemsPerPage: number) {
+    const response = await this.HistoryRoot(ItemsPerPage);
     return response;
   }
 
