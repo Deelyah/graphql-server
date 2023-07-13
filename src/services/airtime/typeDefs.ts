@@ -40,11 +40,20 @@ const AirtimeTypeDefs = gql`
     flag: Boolean!
     auth: Boolean!
     soln: String!
-    # data: [TxnResponseData]
+    data: [TxnResponseData]
   }
 
-  #type TxnResponseData {}
+  type TxnResponseData {
+    ref: ID!
+    txnType: String!
+    operator: TxnOperator
+  }
 
+  type TxnOperator {
+    id: ID!
+    name: String!
+    logo: String!
+  }
   #history
 
   type HistoryResponse {
