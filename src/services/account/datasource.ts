@@ -4,7 +4,6 @@ import { AccountLoginDto, WalletHistoryDto } from "./type.js";
 class AccountDatasource extends AccountRestService {
   async UserLogin(formData: AccountLoginDto) {
     const response = await this.UserLoginRoot(formData);
-
     return response;
   }
 

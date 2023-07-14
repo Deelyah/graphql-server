@@ -22,7 +22,7 @@ class AirtimeRestService extends Base {
     return response.data;
   }
 
-  async GenerateTxnRoot(data: TxnDTO) {
+  async GenerateAirtimeTxnRoot(data: TxnDTO) {
     const formData = new FormData();
     formData.append("amount", data.amount);
     formData.append("telcoId", data.telcoId);

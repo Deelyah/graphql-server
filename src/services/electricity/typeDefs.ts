@@ -7,7 +7,8 @@ const ElectricityTypeDefs = gql`
     GetHistory: HistoryResponse
   }
   type Mutation {
-  GenerateTxn(data:  TxnData): TxnResponse}
+    GenerateTxn(data: ElectricityTxnData): TxnResponse
+  }
 
   # GetDiscos (distribution companies)
   type DisComsResponse {
@@ -48,32 +49,31 @@ const ElectricityTypeDefs = gql`
   #type MeterDetailsResponseData {}
 
   #Get History
-  type HistoryResponse{
+  type HistoryResponse {
     msg: String!
     flag: Boolean!
     auth: Boolean!
     soln: String!
-    data: 
-    }
+    # data:
+  }
 
+  #Generate Txn
+  input ElectricityTxnData {
+    amount: String
+    meter_number: String
+    meterType: String
+    disco: Int
+  }
 
-    #Generate Txn
-    input TxnData{
-        amount: String
-        meter_number: String
-        meterType: String
-        disco: Int
-    }
+  type TxnResponse {
+    msg: String!
+    flag: Boolean!
+    auth: Boolean!
+    soln: String!
+    #data: [TxnResponseData]
+  }
 
-    type TxnResponse{
-        msg: String! 
-        flag: Boolean!
-        auth: Boolean!
-        soln: String!
-        #data: [TxnResponseData]
-    }
-
-    #type TxnResponseData {}
+  #type TxnResponseData {}
 `;
 
 export default ElectricityTypeDefs;

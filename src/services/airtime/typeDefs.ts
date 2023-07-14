@@ -6,7 +6,7 @@ const AirtimeTypeDefs = gql`
     History(ItemsPerPage: Int!): HistoryResponse
   }
   type Mutation {
-    GenerateTxn(data: TxnDTO): TxnResponse
+    GenerateAirtimeTxn(data: TxnDTO): TxnResponse
     PayWWallet(data: PayWWalletDTO): PayWWalletResponse
     PayWBank(data: PayWBankDTO): PayWBankResponse
     AddBeneficiary(data: AddBeneficiaryDTO): AddBeneficiaryResponse

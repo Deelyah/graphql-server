@@ -1,6 +1,6 @@
 import FormData from "form-data";
-import Base from "../../Base";
-import { MeterDetailsParams, TxnData } from "./type";
+import Base from "../../Base.js";
+import { MeterDetailsParams, ElectricityTxnData } from "./type.js";
 
 class ElectricityRestService extends Base {
   async GetDisComsRoot() {
@@ -12,13 +12,14 @@ class ElectricityRestService extends Base {
   }
 
   async GetMeterDetailsRoot(params: MeterDetailsParams) {
+    const { meterType, meter_number, disco } = params;
     const response = await this.marketPlaceApi().get(
-      `/api/v1/bills/electricity/meter-details?meterType=${params.meterType}&disco=${params.meterType}&meter_number=${params.meter_number}`
+      `/api/v1/bills/electricity/meter-details?meterType=${meterType}&disco=${disco}&meter_number=${meter_number}`
     );
     return response;
   }
 
-  async GenerateTxnRoots(data: TxnData) {
+  async GenerateTxnRoots(data: ElectricityTxnData) {
     const formData = new FormData();
     formData.append("amount", data.amount);
     formData.append("disco", data.disco);

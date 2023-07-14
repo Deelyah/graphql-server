@@ -12,8 +12,8 @@ class AirtimeDataSource extends AirtimeRestService {
     return response;
   }
 
-  async GenerateTxn(data: TxnDTO) {
-    const response = await this.GenerateTxnRoot(data);
+  async GenerateAirtimeTxn(data: TxnDTO) {
+    const response = await this.GenerateAirtimeTxnRoot(data);
     return response;
   }
 

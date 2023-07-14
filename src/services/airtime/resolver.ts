@@ -36,14 +36,16 @@ export const AirtimeQuery = {
 // Mutattions //
 
 export const AirtimeMutation = {
-  async GenerateTxn(
+  async GenerateAirtimeTxn(
     _: unknown,
     { data }: { data: TxnDTO },
     context: { req: Request; res: Response }
   ) {
     const token = context.req.cookies["NETAPPS-AUTH-TOKEN"];
     const id = context.req.cookies["NETAPPS-AUTH-ID"];
-    const response = await new AirtimeDataSource(token, id).GenerateTxn(data);
+    const response = await new AirtimeDataSource(token, id).GenerateAirtimeTxn(
+      data
+    );
     console.log("resolver", response);
     return response.data;
   },

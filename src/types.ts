@@ -3,6 +3,7 @@ import { typeDefs as scalarTypeDefs } from "graphql-scalars";
 import AccountSchema from "./services/account/typeDefs.js";
 import WalletSchema from "./services/wallets/typeDefs.js";
 import AirtimeSchema from "./services/airtime/typeDefs.js";
+import ElectricitySchema from "./services/electricity/typeDefs.js";
 const rootTypeDefs = gql`
   enum gender {
     male
@@ -27,5 +28,6 @@ export default [
   AccountSchema,
   WalletSchema,
   AirtimeSchema,
+   ElectricitySchema,
   ...scalarTypeDefs,
 ];

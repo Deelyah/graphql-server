@@ -1,4 +1,4 @@
-export interface TxnData {
+export interface ElectricityTxnData {
   amount: string;
   meter_number: string;
   meterType: string;
