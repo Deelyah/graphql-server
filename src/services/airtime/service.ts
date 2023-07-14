@@ -27,6 +27,7 @@ class AirtimeRestService extends Base {
     formData.append("amount", data.amount);
     formData.append("telcoId", data.telcoId);
     formData.append("phone", data.phone);
+    // console.log(formData.getHeaders());
 
     const response = await this.marketPlaceApi().post(
       "/api/v1/bills/airtime/generate-txn",
@@ -36,8 +37,7 @@ class AirtimeRestService extends Base {
       }
     );
 
-    console.log("generate", response.data);
-    return response.data;
+    return response;
   }
 
   async PayWWalletRoot(data: PayWWalletDTO) {

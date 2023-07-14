@@ -29,7 +29,6 @@ export const AccountMutation = {
       cookieSettings
     );
 
-    console.log(context.res.cookie);
     return response.data;
   },
 };

@@ -6,7 +6,7 @@ const AirtimeTypeDefs = gql`
     History(ItemsPerPage: Int!): HistoryResponse
   }
   type Mutation {
-    GenerateTxn(data: TxnDTO): TxnResponse!
+    GenerateTxn(data: TxnDTO): TxnResponse
     PayWWallet(data: PayWWalletDTO): PayWWalletResponse
     PayWBank(data: PayWBankDTO): PayWBankResponse
     AddBeneficiary(data: AddBeneficiaryDTO): AddBeneficiaryResponse
@@ -30,29 +30,29 @@ const AirtimeTypeDefs = gql`
 
   #generate TXN
   input TxnDTO {
-    telcoId: ID!
-    amount: String!
-    phone: String!
+    telcoId: ID
+    amount: String
+    phone: String
   }
 
   type TxnResponse {
-    msg: String!
-    flag: Boolean!
-    auth: Boolean!
-    soln: String!
+    msg: String
+    flag: Boolean
+    auth: Boolean
+    soln: String
     data: TxnResponseData
   }
 
   type TxnResponseData {
-    ref: ID!
-    txnType: String!
+    ref: ID
+    txnType: String
     operator: TxnOperator
   }
 
   type TxnOperator {
-    id: ID!
-    name: String!
-    logo: String!
+    id: ID
+    name: String
+    logo: String
   }
 
   #history
