@@ -37,14 +37,17 @@ export default class Base extends GeneralController {
 
   marketPlaceApi() {
     if (this.token && this.id) {
-      const payload = {
-        AUTH_TOKEN: this.token,
-        AUTH_ID: this.id,
-        PLATFORM: "MKTPLC_WEB",
-      };
+      // const payload = {
+      //   AUTH_TOKEN: this.token,
+      //   AUTH_ID: this.id,
+      //   PLATFORM: "WEB",
+      // };
+      // NETAPPS: JSON.stringify(payload),
 
       axiosInstance.defaults.headers.common = {
-        NETAPPS: JSON.stringify(payload),
+        "x-platform": "WEB",
+        "x-auth-token": this.token,
+        "x-auth-id": this.id,
       };
     }
     return axiosInstance;

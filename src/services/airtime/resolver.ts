@@ -43,6 +43,7 @@ export const AirtimeMutation = {
   ) {
     const token = context.req.cookies["NETAPPS-AUTH-TOKEN"];
     const id = context.req.cookies["NETAPPS-AUTH-ID"];
+    console.log("token");
     const response = await new AirtimeDataSource(token, id).GenerateAirtimeTxn(
       data
     );

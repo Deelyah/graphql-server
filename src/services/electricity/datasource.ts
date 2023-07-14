@@ -1,5 +1,10 @@
 import ElectricityRestService from "./service.js";
-import { MeterDetailsParams } from "./type.js";
+import {
+  EVBankData,
+  EVWalletDTO,
+  ElectricityTxnDTO,
+  MeterDetailsParams,
+} from "./type.js";
 
 class ElectricityDataSource extends ElectricityRestService {
   async GetDisComs() {
@@ -9,6 +14,26 @@ class ElectricityDataSource extends ElectricityRestService {
 
   async GetMeterDetails(params: MeterDetailsParams) {
     const response = await this.GetMeterDetailsRoot(params);
+    return response;
+  }
+
+  async GetElectricityHistory() {
+    const response = await this.GetElectricityHistoryRoots();
+    return response;
+  }
+
+  async GenerateElectricityTxn(data: ElectricityTxnDTO) {
+    const response = await this.GenerateElectricityTxnRoots(data);
+    return response;
+  }
+
+  async ElectricityViaWallet(data: EVWalletDTO) {
+    const response = await this.ElectricityViaWalletRoots(data);
+    return response;
+  }
+
+  async ElectricityViaBank(data: EVBankData) {
+    const response = await this.ElectricityViaBankRoots(data);
     return response;
   }
 }
