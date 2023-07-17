@@ -14,10 +14,8 @@ export const AccountMutation = {
     { data }: { data: AccountLoginDto },
     context: { req: Request; res: Response }
   ) {
-    // console.log(data);
     await new AccountValidation().userLogin(data);
     const response = await new AccountDatasource().UserLogin(data);
-
     context.res.cookie(
       "NETAPPS-AUTH-TOKEN",
       response.headers["auth_token"],
@@ -41,7 +39,7 @@ export const AccountQuery = {
   ) {
     const token = context.req.cookies["NETAPPS-AUTH-TOKEN"];
     const id = context.req.cookies["NETAPPS-AUTH-ID"];
-    console.log("req cookies", token, id);
+    // console.log("req cookies", token, id);
 
     const response = await new AccountDatasource(token, id).GetUserProfile();
 
@@ -56,7 +54,7 @@ export const AccountQuery = {
     const token = context.req.cookies["NETAPPS-AUTH-TOKEN"];
     const id = context.req.cookies["NETAPPS-AUTH-ID"];
     // console.log("req cookies", token, id);
-    console.log(data);
+    // console.log(data);
 
     const response = await new AccountDatasource(token, id).GetWalletHistory(
       data

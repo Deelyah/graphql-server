@@ -21,25 +21,25 @@ const AccountTypeDefs = gql`
   }
 
   type LoginResponse {
-    msg: String!
-    flag: Boolean!
-    auth: Boolean!
-    soln: String!
-    data: LoginData!
-    # AUTH_TOKEN: String!
+    msg: String
+    flag: Boolean
+    auth: Boolean
+    soln: String
+    data: LoginData
+    # AUTH_TOKEN: String
   }
 
   type LoginData {
-    userType: UserType!
-    uid: Int!
-    firstname: String!
-    surname: String!
-    phone: String!
-    email: String!
+    userType: UserType
+    uid: Int
+    firstname: String
+    surname: String
+    phone: String
+    email: String
     photo: String
     balance: String
-    currency: String!
-    hasPIN: Boolean!
+    currency: String
+    hasPIN: Boolean
   }
 
   enum UserType {

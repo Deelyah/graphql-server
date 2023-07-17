@@ -49,6 +49,10 @@ export default class Base extends GeneralController {
         "x-auth-token": this.token,
         "x-auth-id": this.id,
       };
+    } else {
+      axiosInstance.defaults.headers.common = {
+        "x-platform": "WEB",
+      };
     }
     return axiosInstance;
   }
