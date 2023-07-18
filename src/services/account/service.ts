@@ -11,7 +11,6 @@ class AccountRestService extends Base {
     const formData = new FormData();
     formData.append("username", data.username);
     formData.append("password", data.password);
-    console.log(formData.getHeaders());
     const response = await this.marketPlaceApi().post(
       "/api/v1/auth/login",
       formData,

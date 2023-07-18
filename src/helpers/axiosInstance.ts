@@ -18,7 +18,7 @@ axiosInstance.interceptors.response.use(
   },
 
   function (error) {
-    // console.log("errorr", error);
+    console.log("errorr", error);
     return Promise.reject(
       new ErrorHandlers().ValidationError(
         error?.response?.data?.message || error?.response?.data?.responseMessage

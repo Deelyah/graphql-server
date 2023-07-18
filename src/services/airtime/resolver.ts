@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import AirtimeDataSource from "./datasource.js";
 import {
   AddBeneficiaryDTO,
-  PayWBankDTO,
-  PayWWalletDTO,
+  AirtimeViaBankDTO,
+  AirtimeViaWalletDTO,
   TxnDTO,
 } from "./type.js";
 
@@ -43,33 +43,37 @@ export const AirtimeMutation = {
   ) {
     const token = context.req.cookies["NETAPPS-AUTH-TOKEN"];
     const id = context.req.cookies["NETAPPS-AUTH-ID"];
-    console.log("token");
     const response = await new AirtimeDataSource(token, id).GenerateAirtimeTxn(
       data
     );
-    console.log("resolver", response);
     return response.data;
   },
 
-  async PayWWallet(
+  async AirtimeViaWallet(
     _: unknown,
-    data: PayWWalletDTO,
+    { data }: { data: AirtimeViaWalletDTO },
     context: { req: Request; res: Response }
   ) {
     const token = context.req.cookies["NETAPPS-AUTH-TOKEN"];
     const id = context.req.cookies["NETAPPS-AUTH-ID"];
-    const response = await new AirtimeDataSource(token, id).PayWWallet(data);
+    const response = await new AirtimeDataSource(token, id).AirtimeViaWallet(
+      data
+    );
+    console.log("wallet", response);
+
     return response;
   },
 
-  async PayWBank(
+  async AirtimeViaBank(
     _: unknown,
-    data: PayWBankDTO,
+    data: AirtimeViaBankDTO,
     context: { req: Request; res: Response }
   ) {
     const token = context.req.cookies["NETAPPS-AUTH-TOKEN"];
     const id = context.req.cookies["NETAPPS-AUTH-ID"];
-    const response = await new AirtimeDataSource(token, id).PayWBank(data);
+    const response = await new AirtimeDataSource(token, id).AirtimeViaBank(
+      data
+    );
     return response;
   },
 

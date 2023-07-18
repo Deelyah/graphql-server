@@ -1,5 +1,10 @@
 import AirtimeRestService from "./service.js";
-import { AddBeneficiaryDTO, PayWBankDTO, PayWWalletDTO, TxnDTO } from "./type";
+import {
+  AddBeneficiaryDTO,
+  AirtimeViaBankDTO,
+  AirtimeViaWalletDTO,
+  TxnDTO,
+} from "./type";
 
 class AirtimeDataSource extends AirtimeRestService {
   async GetTelcos() {
@@ -17,13 +22,14 @@ class AirtimeDataSource extends AirtimeRestService {
     return response;
   }
 
-  async PayWWallet(data: PayWWalletDTO) {
-    const response = await this.PayWWalletRoot(data);
+  async AirtimeViaWallet(data: AirtimeViaWalletDTO) {
+    const response = await this.AirtimeViaWalletRoot(data);
+    console.log("DAtaSource", response)
     return response;
   }
 
-  async PayWBank(data: PayWBankDTO) {
-    const response = await this.PayWBankRoot(data);
+  async AirtimeViaBank(data: AirtimeViaBankDTO) {
+    const response = await this.AirtimeViaBankRoot(data);
     return response;
   }
 

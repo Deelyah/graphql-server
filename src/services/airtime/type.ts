@@ -4,13 +4,13 @@ export interface TxnDTO {
   phone: string;
 }
 
-export interface PayWWalletDTO {
+export interface AirtimeViaWalletDTO {
   walletCode: string;
   pin: number;
   txnRef: string;
 }
 
-export interface PayWBankDTO {
+export interface AirtimeViaBankDTO {
   txnRef: string;
   paymentRef: string;
 }

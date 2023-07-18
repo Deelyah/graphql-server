@@ -2,8 +2,8 @@ import FormData from "form-data";
 import Base from "../../Base.js";
 import {
   AddBeneficiaryDTO,
-  PayWBankDTO,
-  PayWWalletDTO,
+  AirtimeViaBankDTO,
+  AirtimeViaWalletDTO,
   TxnDTO,
 } from "./type.js";
 
@@ -36,11 +36,10 @@ class AirtimeRestService extends Base {
         headers: { ...formData.getHeaders() },
       }
     );
-    console.log("axios response", response.data);
     return response;
   }
 
-  async PayWWalletRoot(data: PayWWalletDTO) {
+  async AirtimeViaWalletRoot(data: AirtimeViaWalletDTO) {
     let formData = new FormData();
     formData.append("walletCode", data.walletCode);
     formData.append("pin", data.pin);
@@ -52,10 +51,11 @@ class AirtimeRestService extends Base {
         headers: { ...formData.getHeaders() },
       }
     );
+    console.log(response?.data);
     return response.data;
   }
 
-  async PayWBankRoot(data: PayWBankDTO) {
+  async AirtimeViaBankRoot(data: AirtimeViaBankDTO) {
     let formData = new FormData();
     formData.append("txnRef", data.txnRef);
     formData.append("paymentRef", data.paymentRef);

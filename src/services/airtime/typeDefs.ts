@@ -7,8 +7,8 @@ const AirtimeTypeDefs = gql`
   }
   type Mutation {
     GenerateAirtimeTxn(data: TxnDTO): TxnResponse
-    PayWWallet(data: PayWWalletDTO): PayWWalletResponse
-    PayWBank(data: PayWBankDTO): PayWBankResponse
+    AirtimeViaWallet(data: AirtimeViaWalletDTO): AirtimeViaWalletResponse
+    AirtimeViaBank(data: AirtimeViaBankDTO): AirtimeViaBankResponse
     AddBeneficiary(data: AddBeneficiaryDTO): AddBeneficiaryResponse
     DltBeneficiary(id: ID!): DltBeneficiaryResponse
   }
@@ -81,18 +81,18 @@ const AirtimeTypeDefs = gql`
   }
 
   #Pay with wallet
-  input PayWWalletDTO {
+  input AirtimeViaWalletDTO {
     walletCode: ID!
     pin: Int!
     txnRef: ID!
   }
 
-  type PayWWalletResponse {
+  type AirtimeViaWalletResponse {
     msg: String!
     flag: Boolean!
     auth: Boolean!
     soln: String!
-    data: PayWWalletResponseData
+    data: AirtimeViaWalletResponseData
   }
 
   type Operator {
@@ -100,26 +100,26 @@ const AirtimeTypeDefs = gql`
     name: String!
     logo: String!
   }
-  type PayWWalletResponseData {
-    status: String!
+  type AirtimeViaWalletResponseData {
+    status: String
     operator: Operator
   }
 
   #Pay with bank
-  input PayWBankDTO {
+  input AirtimeViaBankDTO {
     txnRef: ID!
     paymentRef: ID!
   }
 
-  type PayWBankResponse {
+  type AirtimeViaBankResponse {
     msg: String!
     flag: Boolean!
     auth: Boolean!
     soln: String!
-    # data: [PayWBankResponseData]
+    # data: [AirtimeViaBankResponseData]
   }
 
-  # type PayWBankResponseData {}
+  # type AirtimeViaBankResponseData {}
 
   # Add Beneficiary
 
